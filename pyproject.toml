@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "aiogram>=3.31.0",
     "alembic==1.20.0",
     "asyncpg>=0.31.0",
     "dishka>=1.10.1",
@@ -18,9 +19,6 @@ dependencies = [
     "taskiq>=0.12.6",
     "taskiq-aio-pika>=0.6.0",
 ]
-
-[project.scripts]
-dev = "shopucdyadya.main:app"
 
 [dependency-groups]
 dev = [
