@@ -13,8 +13,9 @@ from shopucdyadya.app.config import settings
 dp = Dispatcher()
 
 
-@dp.message(CommandStart())
+@dp.message(CommandStart(),)
 async def command_start_handler(message: Message) -> None:
+    assert message.from_user is not None
     await message.answer(f"Hello, {html.bold(message.from_user.full_name)}!")
 
 
@@ -25,13 +26,18 @@ async def echo_handler(message: Message) -> None:
     except TypeError:
         await message.answer("Nice try!")
 
+
 async def _run() -> None:
     try:
-        bot = Bot(token=settings.bot_token.get_secret_value(), default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+        bot = Bot(
+            token=settings.bot_token.get_secret_value(),
+            default=DefaultBotProperties(parse_mode=ParseMode.HTML),
+        )
         await dp.start_polling(bot)
     except KeyboardInterrupt:
         print("Бот остановлен!")
-        
+
+
 def main() -> None:
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     try:

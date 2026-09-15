@@ -28,10 +28,10 @@ test:
 	pytest -s -v
 
 worker:
-	uv run taskiq worker shopucdyadya.workers.broker:broker
+	uv run taskiq worker shopucdyadya.infa.broker:broker
 	
 scheduler:
-	uv run taskiq scheduler shopucdyadya.workers.scheduler:scheduler
+	uv run taskiq scheduler shopucdyadya.jobs.scheduler:scheduler
 
 docker:
 	docker compose up -d --build
