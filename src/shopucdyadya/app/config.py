@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from pydantic import AmqpDsn, BaseModel, PostgresDsn, RedisDsn
+from pydantic import AmqpDsn, BaseModel, PostgresDsn, RedisDsn, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from shopucdyadya.app.openapi import OpenAPIConfig
@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     cache_url: RedisDsn
     db_url: PostgresDsn
     broker_url: AmqpDsn
+    bot_token: SecretStr
 
 
 settings = Settings()

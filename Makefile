@@ -21,6 +21,9 @@ typecheck:
 dev:
 	uv run uvicorn shopucdyadya.app.factory:create_app --factory --reload
 
+bot:
+	uv run python -m shopucdyadya.app.bot
+
 test:
 	pytest -s -v
 
